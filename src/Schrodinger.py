@@ -2,8 +2,6 @@
 @author: Maziar Raissi
 """
 
-import sys
-sys.path.insert(0, '../../Utilities/')
 
 import tensorflow as tf
 import numpy as np
@@ -11,7 +9,7 @@ import matplotlib.pyplot as plt
 import scipy.io
 from scipy.interpolate import griddata
 from pyDOE import lhs
-from plotting import newfig, savefig
+from Utilities.plotting import newfig, savefig
 from mpl_toolkits.mplot3d import Axes3D
 import time
 import matplotlib.gridspec as gridspec

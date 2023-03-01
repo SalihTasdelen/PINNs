@@ -2,8 +2,6 @@
 @author: Maziar Raissi
 """
 
-#import sys
-#sys.path.append('../Utilities/')
 
 import tensorflow as tf
 import numpy as np
