@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile.dev
     volumes:
       - ./src:/src
-    command: nvidia-smi
+    command: bash
     deploy:
       resources:
         reservations:
