@@ -1,0 +1,5 @@
+.devcontainer
+.devcontainer/*
+*.pdf
+*.eps
+*.pyc
