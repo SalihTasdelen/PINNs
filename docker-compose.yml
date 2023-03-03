@@ -6,7 +6,10 @@ services:
       dockerfile: Dockerfile.dev
     volumes:
       - ./src:/src
-    command: bash
+    ulimits:
+      memlock: -1
+      stack: 67108864
+    shm_size: 1gb
     deploy:
       resources:
         reservations:
