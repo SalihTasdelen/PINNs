@@ -214,7 +214,7 @@ if __name__ == "__main__":
     N_f = 20000
     layers = [2, 100, 100, 100, 100, 2]
         
-    data = scipy.io.loadmat('../Data/NLS.mat')
+    data = scipy.io.loadmat('./Data/NLS.mat')
     
     t = data['tt'].flatten()[:,None]
     x = data['x'].flatten()[:,None]
@@ -245,7 +245,7 @@ if __name__ == "__main__":
     model = PhysicsInformedNN(x0, u0, v0, tb, X_f, layers, lb, ub)
              
     start_time = time.time()                
-    model.train(50000)
+    model.train(5000)
     elapsed = time.time() - start_time                
     print('Training time: %.4f' % (elapsed))
     
@@ -342,5 +342,5 @@ if __name__ == "__main__":
     ax.set_ylim([-0.1,5.1])    
     ax.set_title('$t = %.2f$' % (t[125]), fontsize = 10)
     
-    # savefig('./figures/NLS')  
+    savefig('./NLS')  
     

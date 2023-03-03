@@ -42,7 +42,7 @@ class PhysicsInformedNN:
         self.lambda_2 = tf.Variable([-6.0], dtype=tf.float32)       
         
         # Load IRK weights
-        tmp = np.float32(np.loadtxt('../../Utilities/IRK_weights/Butcher_IRK%d.txt' % (q), ndmin = 2))
+        tmp = np.float32(np.loadtxt('./Utilities/IRK_weights/Butcher_IRK%d.txt' % (q), ndmin = 2))
         weights =  np.reshape(tmp[0:q**2+q], (q+1,q))     
         self.IRK_alpha = weights[0:-1,:]
         self.IRK_beta = weights[-1:,:]        
@@ -184,7 +184,7 @@ if __name__ == "__main__":
     N1 = 201
     layers = [1, 50, 50, 50, 50, q]
     
-    data = scipy.io.loadmat('../Data/KdV.mat')
+    data = scipy.io.loadmat('./Data/KdV.mat')
     
     t_star = data['tt'].flatten()[:,None]
     x_star = data['x'].flatten()[:,None]

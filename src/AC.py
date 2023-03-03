@@ -36,7 +36,7 @@ class PhysicsInformedNN:
         self.weights, self.biases = self.initialize_NN(layers)
         
         # Load IRK weights
-        tmp = np.float32(np.loadtxt('../../Utilities/IRK_weights/Butcher_IRK%d.txt' % (q), ndmin = 2))
+        tmp = np.float32(np.loadtxt('./Utilities/IRK_weights/Butcher_IRK%d.txt' % (q), ndmin = 2))
         self.IRK_weights = np.reshape(tmp[0:q**2+q], (q+1,q))
         self.IRK_times = tmp[q**2+q:]
         
@@ -164,7 +164,7 @@ if __name__ == "__main__":
     
     N = 200
     
-    data = scipy.io.loadmat('../Data/AC.mat')
+    data = scipy.io.loadmat('./Data/AC.mat')
     
     t = data['tt'].flatten()[:,None] # T x 1
     x = data['x'].flatten()[:,None] # N x 1
@@ -189,7 +189,7 @@ if __name__ == "__main__":
     x_star = x
 
     model = PhysicsInformedNN(x0, u0, x1, layers, dt, lb, ub, q)
-    model.train(10000)
+    model.train(50000)
     
     U1_pred = model.predict(x_star)
 
@@ -249,7 +249,7 @@ if __name__ == "__main__":
     
     ax.legend(loc='upper center', bbox_to_anchor=(0.1, -0.3), ncol=2, frameon=False)
     
-    # savefig('./figures/AC')  
+    savefig('./AC')  
     
 
     
