@@ -1,14 +1,21 @@
-FROM tensorflow/tensorflow:1.10.1-gpu-py3
+FROM nvcr.io/nvidia/tensorflow:23.02-tf1-py3
 
 WORKDIR "/src"
 
 RUN apt-get update -y && \
-    apt-get install -y python3-tk
+    apt-get install -y \
+    python3-tk \
+    texlive texlive-latex-extra texlive-fonts-recommended dvipng
 
 COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
 COPY src/ .
+
+ENV TF_GPU_ALLOCATOR=cuda_malloc_async
+# Uncomment the following line if Auto Mixed Precision Graphing is desired.
+# ENV TF_ENABLE_AUTO_MIXED_PRECISION=1
+ENV TF_ALLOW_IOLIBS=1
 
 CMD [ "python", "./NavierStokes.py" ]
